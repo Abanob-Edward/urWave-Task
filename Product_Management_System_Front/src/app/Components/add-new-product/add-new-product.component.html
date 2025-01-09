@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header text-white" style="background-color: #45526e;">
+      <h5>Add New Product</h5>
+    </div>
+    <div class="card-body">
+      <!-- Form -->
+      <form (ngSubmit)="onSubmit(productForm)" #productForm="ngForm" novalidate>
+        <!-- Name Field -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Product Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="form-control"
+            [(ngModel)]="product.name"
+            required
+            maxlength="100"
+          />
+          <div *ngIf="isSubmitted && productForm.controls['name']?.invalid" class="text-danger">
+            Product name is required and must not exceed 100 characters.
+          </div>
+        </div>
+
+        <!-- Price Field -->
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            class="form-control"
+            [(ngModel)]="product.price"
+            required
+            min="0.01"
+          />
+          <div *ngIf="isSubmitted && productForm.controls['price']?.invalid" class="text-danger">
+            Price is required and must be a positive number.
+          </div>
+        </div>
+
+        <!-- Description Field -->
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            class="form-control"
+            [(ngModel)]="product.description"
+            required
+            maxlength="500"
+            rows="3"
+          ></textarea>
+          <div *ngIf="isSubmitted && productForm.controls['description']?.invalid" class="text-danger">
+            Description is required and must not exceed 500 characters.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn text-white" style="background-color: #45526e;">
+          Add Product
+        </button>
+      </form>
+
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="mt-3 text-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>

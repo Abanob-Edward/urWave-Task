@@ -1,0 +1,49 @@
+<div class="container">
+
+    <div class="search-bar my-3">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Search Products..."
+          [(ngModel)]="searchTerm"
+          (input)="filterProducts()"
+        />
+      </div>
+    <p-table [value]="filteredProducts" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template #header>
+            <tr style="color: #45526e;">
+                <th (click)="SortByID()">Id</th>
+                <th (click)="SortByName()"> Name</th>
+                <th (click)="SortByPrice()">Price</th>
+                <th>Description</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-product>
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="['/updateProduct', product.id ]">
+                      Edit
+                    </button>
+                  </td>
+                  
+                  <td>
+                    <button class="btn btn-dark" [routerLink]="['/ProductDetails', product.id ]">
+                      Details
+                    </button>
+                  </td>
+                  <td>
+                    <button class="btn btn-danger" (click)="openConfirmDialog(product.id)">
+                      Delete
+                    </button>
+                  </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
