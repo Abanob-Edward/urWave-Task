@@ -108,11 +108,11 @@ namespace Product_Management_System.Controllers
             return Ok(result.Message);
         }
 
-        //[HttpGet]
-        //[Route("errorTest")]
-        //public async Task<IActionResult> error(int id)
-        //{
-        //    throw new Exception("testing errors");
-        //}
+        [HttpGet]
+        [Route("Test/Error")]
+        public async Task<IActionResult> error(int id)
+        {
+            throw new Exception("testing errors");
+        }
     }
 }
