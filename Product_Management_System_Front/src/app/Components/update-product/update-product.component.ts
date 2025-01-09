@@ -18,7 +18,8 @@ export class UpdateProductComponent implements OnInit {
     id: 0,
     name: '',
     description: '',
-    price: 0
+    price: 0,
+    createdDate:''
   };
   isSubmitted = false;
   errorMessage: string | null = null;

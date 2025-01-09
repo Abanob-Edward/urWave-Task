@@ -12,10 +12,11 @@
     <p-table [value]="filteredProducts" [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template #header>
             <tr style="color: #45526e;">
-                <th (click)="SortByID()">Id</th>
+                <th (click)="SortByID()">Id </th>
                 <th (click)="SortByName()"> Name</th>
                 <th (click)="SortByPrice()">Price</th>
-                <th>Description</th>
+                <th (click)="SortByDate()">CreatedDate</th>
+                <th (click)="SortByDescription()">Description</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -26,6 +27,7 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
+                <td>{{ product.createdDate }}</td>
                 <td>{{ product.description }}</td>
                 <td>
                     <button class="btn btn-primary" [routerLink]="['/updateProduct', product.id ]">

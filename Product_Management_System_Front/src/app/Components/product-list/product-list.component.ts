@@ -35,6 +35,12 @@ export class ProductListComponent implements OnInit  {
   SortByPrice(){
     this.getAllProducts('price');
   }
+  SortByDate(){
+    this.getAllProducts('createdDate');
+  }
+  SortByDescription(){
+    this.getAllProducts('description');
+  }
   getAllProducts(sortedCol:string='id'){
     this.ProductService.getAllWithPaging(10, 1,sortedCol,'asc')
     .subscribe(prd => {
